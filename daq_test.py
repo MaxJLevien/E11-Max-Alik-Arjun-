@@ -11,7 +11,7 @@ runTime = int(sys.argv[1])
 now = time.time()
 
 filename = 'data.csv'
-filename.argv[2]
+filename = sys.argv[2]
 file = open(filename,'w',newline='')
 writer = csv.writer(file)
 
