@@ -20,8 +20,9 @@ file = open("aq_data.csv", "w", newline='')
 writer = csv.writer(file)
 writer.writerow(meta_data)
 start_time = time.time()
-while (time.time() - start_time) < 20:
-
+run_time = 20
+while (time.time() - start_time) < run_time:
+    time.sleep(1)
 
     try:
         aqdata = pm25.read()
@@ -54,4 +55,3 @@ while (time.time() - start_time) < 20:
     print("---------------------------------------")
     data_out = [time.time(), aqdata["pm10 standard"], aqdata["pm25 standard"], aqdata["pm100 standard"], bme680.temperature, bme680.gas, bme680.relative_humidity, bme680.pressure, bme680.altitude]
     writer.writerow(data_out)
-    time.sleep(2)
