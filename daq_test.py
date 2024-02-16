@@ -4,11 +4,14 @@ import time
 import csv
 import numpy as np
 
+print(sys.argv)
+
 startTime = time.time()
-runTime = 30
+runTime = int(sys.argv[1])
 now = time.time()
 
 filename = 'data.csv'
+filename.argv[2]
 file = open(filename,'w',newline='')
 writer = csv.writer(file)
 
