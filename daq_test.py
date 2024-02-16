@@ -13,6 +13,7 @@ file = open(filename,'w',newline='')
 writer = csv.writer(file)
 
 metaData = ['Time', 'Data']
+print(metaData)
 writer.writerow(metaData)
 
 while (now - startTime) < runTime:
@@ -22,4 +23,5 @@ while (now - startTime) < runTime:
     now = time.time()
 
     dataList = [now,data]
+    print(dataList)
     writer.writerow(dataList)
