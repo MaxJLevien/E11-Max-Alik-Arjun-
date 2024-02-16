@@ -3,26 +3,30 @@ import csv
 import serial
 import adafruit_bme680
 import board
+import sys
 import numpy as np
+from adafruit_pm25.uart import PM25_UART
 
 reset_pin = None
-
-# For use with Raspberry Pi/Linux:
-
 uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=0.25)
 
-from adafruit_pm25.uart import PM25_UART
+startTime = time.time()
+runTime = int(sys.argv[1])
+now = time.time()
+
 pm25 = PM25_UART(uart, reset_pin)
+
+filename = sys.argv[2]
+file = open(filename, "w", newline='')
+writer = csv.writer(file)
 
 print("Found PM2.5 sensor, reading data...")
 meta_data = ["Time","PM1.0","PM2.5","PM10","Temperature","Gas","Relative Humidity","Pressure","Altitude"]
-file = open("aq_data.csv", "w", newline='')
-writer = csv.writer(file)
 writer.writerow(meta_data)
-start_time = time.time()
-run_time = 20
-while (time.time() - start_time) < run_time:
+
+while (now - startTime) < runTime:
     time.sleep(1)
+    now = time.time()
 
     try:
         aqdata = pm25.read()
