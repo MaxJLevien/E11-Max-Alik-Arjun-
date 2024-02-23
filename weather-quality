@@ -29,8 +29,10 @@ print("Found PM2.5 sensor, reading data...")
 meta_data = ["Time","PM1.0","PM2.5","PM10","Temperature","Gas","Relative Humidity","Pressure","Altitude"]
 writer.writerow(meta_data)
 
-while (now - startTime) < runTime:
+while True:
+    
     time.sleep(1)
+
     now = time.time()
 
     try:
