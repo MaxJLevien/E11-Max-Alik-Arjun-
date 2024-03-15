@@ -5,6 +5,7 @@ import csv
 
 count = 0
 runningCounts = 0
+index = 1
 print("running")
 
 startTime = time.time()
@@ -14,7 +15,7 @@ filename = sys.argv[2]
 file = open(filename, "w", newline='')
 writer = csv.writer(file)
 
-meta_data = ["Counts","Total Counts", "Count Rate (1/s)","Time (Epoch)"]
+meta_data = ["Entry","Counts","Total Counts", "Count Rate (1/s)","Time (Epoch)"]
 writer.writerow(meta_data)
 
 def my_callback(channel):
@@ -33,6 +34,7 @@ GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback)
 while (time.time()-startTime) <= runTime:
     time.sleep(60)
 
+    index += 1
     countRate = count/60
     runningCountRate = runningCounts/(time.time()-startTime)
 
@@ -41,5 +43,5 @@ while (time.time()-startTime) <= runTime:
     print("Running Count Rate: " + str(runningCountRate) + " Counts/s")
     count = 0
 
-    data_out = [count, runningCounts, countRate, time.time()]
+    data_out = [index, count, runningCounts, countRate, time.time()]
     writer.writerow(data_out)
