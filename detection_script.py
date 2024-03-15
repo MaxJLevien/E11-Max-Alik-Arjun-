@@ -33,15 +33,13 @@ GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback)
 
 while (time.time()-startTime) <= runTime:
     time.sleep(60)
-
     index += 1
     countRate = count/60
     runningCountRate = runningCounts/(time.time()-startTime)
-
     print("Current Amount of Pulses Detected: " + str(count))
     print("Count Rate: " + str(countRate) + " Counts/s")
+    print("Total Amount of Pulses Detected: " + str(runningCounts))
     print("Running Count Rate: " + str(runningCountRate) + " Counts/s")
     count = 0
-
     data_out = [index, count, runningCounts, countRate, time.time()]
     writer.writerow(data_out)
