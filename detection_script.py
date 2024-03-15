@@ -15,5 +15,7 @@ GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback)
 
 while True:
     time.sleep(60)
+    countRate = count/60
     print("Current Amount of Pulses Detected: " + str(count))
+    print("Count Rate: " + str(countRate))
     count = 0
