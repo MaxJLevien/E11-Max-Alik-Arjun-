@@ -15,7 +15,7 @@ filename = sys.argv[2]
 file = open(filename, "w", newline='')
 writer = csv.writer(file)
 
-meta_data = ["Entry","Counts","Total Counts", "Count Rate (1/s)","Time (Epoch)"]
+meta_data = ["Entry","Counts","Total Counts", "Count Rate (1/s)", "Running Count Rate (1/s)", "Time (Epoch)"]
 writer.writerow(meta_data)
 
 def my_callback(channel):
@@ -42,7 +42,7 @@ while (time.time()-startTime) <= runTime:
     print("Total Amount of Pulses Detected: " + str(runningCounts))
     print("Running Count Rate: " + str(runningCountRate) + " Counts/s")
     
-    data_out = [index, count, runningCounts, countRate, time.time()]
+    data_out = [index, count, runningCounts, countRate, runningCountRate, time.time()]
     writer.writerow(data_out)
     
     count = 0
