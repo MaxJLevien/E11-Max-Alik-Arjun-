@@ -43,3 +43,5 @@ while (time.time()-startTime) <= runTime:
     count = 0
     data_out = [index, count, runningCounts, countRate, time.time()]
     writer.writerow(data_out)
+
+file.close()
