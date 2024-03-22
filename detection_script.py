@@ -32,7 +32,7 @@ GPIO.setup(17, GPIO.IN)
 GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback)
 
 while (time.time()-startTime) <= runTime:
-    time.sleep(2)
+    time.sleep(60)
     
     countRate = count/60
     runningCountRate = runningCounts/(time.time()-startTime)
