@@ -48,7 +48,7 @@ GPIO.setup(17, GPIO.IN)
 GPIO.add_event_detect(17, GPIO.FALLING, callback=my_callback)
 
 while (time.time()-startTime) <= runTime:
-    
+
     time.sleep(10)
 
     now = time.time()
@@ -91,7 +91,7 @@ while (time.time()-startTime) <= runTime:
     print("Total Amount of Pulses Detected: " + str(runningCounts))
     print("Running Count Rate: " + str(runningCountRate) + " Counts/s")
 
-    data_out = [time.time(),index aqdata["pm10 standard"], aqdata["pm25 standard"], aqdata["pm100 standard"], bme680.temperature, bme680.gas, bme680.relative_humidity, bme680.pressure, bme680.altitude, count, runningCounts, countRate, runningCountRate]
+    data_out = [time.time(),index, aqdata["pm10 standard"], aqdata["pm25 standard"], aqdata["pm100 standard"], bme680.temperature, bme680.gas, bme680.relative_humidity, bme680.pressure, bme680.altitude, count, runningCounts, countRate, runningCountRate]
     writer.writerow(data_out)
     count = 0
     index += 1
